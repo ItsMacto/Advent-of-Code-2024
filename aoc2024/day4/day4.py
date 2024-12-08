@@ -1,4 +1,4 @@
-from aoc2024.utils.utils import grid_rotate, read_input
+from aoc2024.utils.utils import grid_rotate, read_input, grid_get
 
 def star1():
     data = read_input()
@@ -36,15 +36,33 @@ def star1():
 
     
 def star2():
-    with open('input.txt') as f:
-        data = f.read().splitlines()
+    data = read_input()
+    total = 0
+    
+    for _ in range(1):
+        for i in range(len(data)):
+            for j in range(len(data[0])):
+                if grid_get(data, i, j) == 'M' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j+2) == 'S':
+                    # print(grid_get(data,i, j+2), grid_get(data, i+1, j+1), grid_get(data, i+2, j))
+                    if grid_get(data, i, j+2) == 'M' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j) == 'S':
+                        total += 1
+                    if grid_get(data, i, j+2) == 'S' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j) == 'M':
+                        total += 1
+                if grid_get(data, i, j) == 'S' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j+2) == 'M':
+                    # print(grid_get(data,i, j+2), grid_get(data, i+1, j+1), grid_get(data, i+2, j))
+                    if grid_get(data, i, j+2) == 'M' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j) == 'S':
+                        total += 1
+                    if grid_get(data, i, j+2) == 'S' and grid_get(data, i+1, j+1) == 'A' and grid_get(data, i+2, j) == 'M':
+                        total += 1
         
         
-    return
+        data = grid_rotate(data)
+        
+    return total
     
 
 if __name__ == '__main__':
     print(star1())
-    # print(star2())
+    print(star2())
     
     
