@@ -56,7 +56,7 @@ def star2():
                         total += 1
         
         
-        data = grid_rotate(data)
+        # data = grid_rotate(data)
         
     return total
     
