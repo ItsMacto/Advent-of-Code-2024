@@ -7,8 +7,6 @@ def star1():
         elif operation == '*':
             number *= numbers[index]
         
-        if number == target:
-            return True
         index += 1
         if index == len(numbers):
             return False
@@ -26,8 +24,42 @@ def star1():
     return total
 
 def star2():
+    def bfs(number, index, operation, target):
+        # if index == len(numbers) - 1:
+        #     return number == target
+        # if target < number:
+        #     return False
+        
+        if operation == '+':
+            number += numbers[index]
+        elif operation == '*':
+            number *= numbers[index]
+        elif operation == '||':
+            number = int(str(number) + str(numbers[index]))
+
+
+        index += 1
+        if index == len(numbers):
+            if number == target:
+                return True
+            else:
+                return False
+        return (
+            bfs(number, index, '+', target) or 
+            bfs(number, index, '*', target) or 
+            bfs(number, index, '||', target)
+        )
+        
     data = read_input()
+    # data = read_input(fileName="test.txt")
     total = 0
+    for line in data:
+        target, numbers = line.split(":")
+        target = int(target)
+        numbers = list(int(number) for number in numbers.split(" ")[1:])
+        if bfs(numbers[0], 1, '+', target) or bfs(numbers[0], 1, '*', target) or bfs(numbers[0], 1, '||', target):
+            total += target
+            print("Found", target)
     return total
 
 if __name__ == '__main__':
