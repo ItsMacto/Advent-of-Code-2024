@@ -6,5 +6,9 @@ Day 2: ⭐️⭐️
 Day 3: ⭐️⭐️
 Day 4: ⭐️⭐️
 Day 5: ⭐️⭐️
+Day 6: ⭐️⭐️
 
-Run with: python -m aoc2024.day#.day#
+Run with: 
+```
+python main.py #
+```
