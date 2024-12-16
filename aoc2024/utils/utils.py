@@ -29,3 +29,14 @@ def grid_get(grid, x, y, default="."):
         return grid[y][x]
     except IndexError:
         return default
+    
+def grid_find(grid, target):
+    for y, row in enumerate(grid):
+        for x, cell in enumerate(row):
+            if cell == target:
+                return (x, y)
+    return None
+
+def grid_print(grid):
+    for row in grid:
+        print("".join(row))

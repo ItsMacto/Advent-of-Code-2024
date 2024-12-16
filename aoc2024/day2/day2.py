@@ -1,3 +1,5 @@
+from aoc2024.utils.utils import read_input
+
 def isSafe(report):
     safe = True
     if report[0] < report[1]:
@@ -15,8 +17,7 @@ def isSafe(report):
     return safe
 
 def star1():
-    with open('input.txt') as f:
-        data = f.read().splitlines()
+    data = read_input()
 
     data = [list(map(int, x.split())) for x in data]
     total = 0
@@ -45,8 +46,7 @@ def star1():
 # 5 2 6 7 8    
 # 5 2 6 1 0
 def star2():
-    with open('input.txt') as f:
-        data = f.read().splitlines()
+    data = read_input()
 
     data = [list(map(int, x.split())) for x in data]
     total = 0

@@ -1,15 +1,15 @@
+from aoc2024.utils.utils import read_input
 from collections import Counter
 
 def star1():
     left, right = [], []
 
-    with open('input.txt') as f:
-        data = f.read().splitlines()
-        for i in data:
-            l, r = i.split()
-            # print(l, r)
-            left.append(int(l))
-            right.append(int(r))
+    data = read_input()
+    for i in data:
+        l, r = i.split()
+        # print(l, r)
+        left.append(int(l))
+        right.append(int(r))
 
     left.sort()
     right.sort()
@@ -23,13 +23,12 @@ def star1():
 def star2():
     left, right = [], []
     
-    with open('input.txt') as f:
-        data = f.read().splitlines()
-        for i in data:
-            l, r = i.split()
-            left.append(int(l))
-            right.append(int(r))
-    
+    data = read_input()
+    for i in data:
+        l, r = i.split()
+        left.append(int(l))
+        right.append(int(r))
+
     leftCounter, rightCounter = Counter(left), Counter(right)
     
     total = 0 
