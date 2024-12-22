@@ -16,6 +16,12 @@ def read_input(fileName="input.txt", splitLines=True):
             return f.read().splitlines()
         else:
             return f.read()
+        
+def to_grid(data, toInt=False):
+    if toInt:
+        return [list(map(int, row)) for row in data]
+    else:
+        return [list(row) for row in data]
 
 def grid_rotate(grid, times=1):
     for _ in range(times):
@@ -36,6 +42,14 @@ def grid_find(grid, target):
             if cell == target:
                 return (x, y)
     return None
+
+def grid_find_all(grid, target):
+    results = []
+    for y, row in enumerate(grid):
+        for x, cell in enumerate(row):
+            if cell == target:
+                results.append((x, y))
+    return results
 
 def grid_print(grid):
     for row in grid:
