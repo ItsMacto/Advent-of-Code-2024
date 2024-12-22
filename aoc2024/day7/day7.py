@@ -1,7 +1,7 @@
 from aoc2024.utils.utils import read_input
 
 def star1():
-    def bfs(number, index, operation, target):
+    def dfs(number, index, operation, target):
         if operation == '+':
             number += numbers[index]
         elif operation == '*':
@@ -11,7 +11,7 @@ def star1():
         if index == len(numbers):
             return False
         # print(number, index, operation, target)
-        return bfs(number, index, '+', target) or bfs(number, index, '*', target)
+        return dfs(number, index, '+', target) or dfs(number, index, '*', target)
     
     data = read_input()
     total = 0
@@ -19,12 +19,12 @@ def star1():
         target, numbers = line.split(":")
         target = int(target)
         numbers = list(int(number) for number in numbers.split(" ")[1:])
-        if bfs(numbers[0], 1, '+', target) or bfs(numbers[0], 1, '*', target):
+        if dfs(numbers[0], 1, '+', target) or dfs(numbers[0], 1, '*', target):
             total += target
     return total
 
 def star2():
-    def bfs(number, index, operation, target):
+    def dfs(number, index, operation, target):
         # if index == len(numbers) - 1:
         #     return number == target
         # if target < number:
@@ -45,9 +45,9 @@ def star2():
             else:
                 return False
         return (
-            bfs(number, index, '+', target) or 
-            bfs(number, index, '*', target) or 
-            bfs(number, index, '||', target)
+            dfs(number, index, '+', target) or 
+            dfs(number, index, '*', target) or 
+            dfs(number, index, '||', target)
         )
         
     data = read_input()
@@ -57,7 +57,7 @@ def star2():
         target, numbers = line.split(":")
         target = int(target)
         numbers = list(int(number) for number in numbers.split(" ")[1:])
-        if bfs(numbers[0], 1, '+', target) or bfs(numbers[0], 1, '*', target) or bfs(numbers[0], 1, '||', target):
+        if dfs(numbers[0], 1, '+', target) or dfs(numbers[0], 1, '*', target) or dfs(numbers[0], 1, '||', target):
             total += target
             print("Found", target)
     return total
