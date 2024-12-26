@@ -30,5 +30,5 @@ https://adventofcode.com/2024/
 
 ## Run or create a new day with: 
 ```
-python main.py "day-#"
+python main.py "day #"
 ```
